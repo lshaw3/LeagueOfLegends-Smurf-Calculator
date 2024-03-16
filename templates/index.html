@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>League of Legends Ranks</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Custom CSS styles */
+        .form-group {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-4">
+        <h1 class="mb-4">League of Legends Ranks</h1>
+        
+        <form method="POST" action="/calculate">
+            <div class="row">
+                <div class="col-md-6">
+                    <fieldset>
+                        <legend>Current Rank</legend>
+                        <div class="form-group">
+                            <label for="currentRank">Rank</label>
+                            <select class="form-select" name="currentRank">
+                                <option value="Iron">Iron</option>
+                                <option value="Bronze">Bronze</option>
+                                <option value="Silver">Silver</option>
+                                <option value="Gold">Gold</option>
+                                <option value="Platinum">Platinum</option>
+                                <option value="Emerald">Emerald</option>
+                                <option value="Diamond">Diamond</option>
+                                <option value="Master">Master</option>
+                                <option value="Grandmaster">Grandmaster</option>
+                                <option value="Challenger">Challenger</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="currentTier">Tier</label>
+                            <select class="form-select" name="currentTier">
+                                <option value="4">4</option>
+                                <option value="3">3</option>
+                                <option value="2">2</option>
+                                <option value="1">1</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="currentLP">Current LP</label>
+                            <input type="number" name="currentLP" id="currentLP" class="form-control" step="1" value="0">
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="col-md-6">
+                    <fieldset>
+                        <legend>Goal Rank</legend>
+                        <div class="form-group">
+                            <label for="goalRank">Rank</label>
+                            <select class="form-select" name="goalRank">
+                                <option value="Iron">Iron</option>
+                                <option value="Bronze">Bronze</option>
+                                <option value="Silver">Silver</option>
+                                <option value="Gold">Gold</option>
+                                <option value="Platinum">Platinum</option>
+                                <option value="Emerald">Emerald</option>
+                                <option value="Diamond">Diamond</option>
+                                <option value="Master">Master</option>
+                                <option value="Grandmaster">Grandmaster</option>
+                                <option value="Challenger">Challenger</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="goalTier">Tier</label>
+                            <select class="form-select" name="goalTier">
+                                <option value="4">4</option>
+                                <option value="3">3</option>
+                                <option value="2">2</option>
+                                <option value="1">1</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="goalLP">Target LP</label>
+                            <input type="number" name="goalLP" id="goalLP" class="form-control" step="1" value="0">
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+
+            <!-- Additional input fields -->
+            <div class="form-group">
+                <label for="Winrate">Winrate (%)</label>
+                <input type="number" name="Winrate" id="Winrate" class="form-control" step="1" value="50">
+            </div>
+
+            <div class="form-group">
+                <label for="LPgains">LP Gains</label>
+                <input type="number" name="LPgains" id="LPgains" class="form-control" step="1" value="25">
+            </div>
+
+            <div class="form-group">
+                <label for="LPloss">LP Losses</label>
+                <input type="number" name="LPloss" id="LPloss" class="form-control" step="1" value="25">
+            </div>
+
+            <!-- Error messages -->
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+            <div class="alert alert-danger mt-4">
+                <ul>
+                    {% for category, message in messages %}
+                    <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+            {% endwith %}
+
+            <!-- Submit button -->
+            <div class="text-center mt-4">
+                <button type="submit" class="btn btn-primary">Calculate</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Bootstrap JS (jQuery and Popper.js are required before Bootstrap.js) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+</body>
+</html>
